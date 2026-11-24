@@ -1,0 +1,4 @@
+prepare:
+  min_weeks: 10
+split:
+  train_end: "2025-12-31"

@@ -1,0 +1,17 @@
+stages:
+  generate:
+    cmd: python src/generate_fake_odoo.py
+    deps:
+      - src/generate_fake_odoo.py
+    outs:
+      - data/raw/ventes_odoo.xlsx
+  prepare:
+    cmd: python src/prepare_dataset.py --input data/raw/ventes_odoo.xlsx
+    deps:
+      - src/prepare_dataset.py
+      - data/raw/ventes_odoo.xlsx
+    params:
+      - prepare.min_weeks
+    outs:
+      - data/interim/ventes_anonymes.csv
+      - data/processed/demande_hebdo.csv
